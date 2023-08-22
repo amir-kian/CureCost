@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Mc2.CureCost.Core.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Domain\Mc2.CureCost.Domain.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Presentation.Infrastructure\Mc2.CureCost.Presentation.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Repository\Mc2.CureCost.Repository.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Service\Mc2.CureCost.Service.csproj" />
+    <ProjectReference Include="..\Client\Mc2.CureCost.Presentation.Client.csproj" />
+    <ProjectReference Include="..\Shared\Mc2.CureCost.Presentation.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
