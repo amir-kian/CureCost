@@ -4,6 +4,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Mc2.CureCost.Domain.Commands;
 using Mc2.CureCost.Domain.Queries;
+using Mc2.CureCost.Domain.Enums;
+using System;
 
 
 namespace Mc2.CureCost.Presentation.Server.Controllers.APIs
@@ -61,9 +63,11 @@ namespace Mc2.CureCost.Presentation.Server.Controllers.APIs
             }
         }
 
+
+
         [HttpPost]
         [ActionName("CreateRequest")]
-        public async Task<IActionResult> CreateRequest([FromBody] RequestWriteDTO Request)
+        public async Task<IActionResult> CreateRequest([FromBody] RequestWriteDTO request)
         {
             try
             {
@@ -74,26 +78,29 @@ namespace Mc2.CureCost.Presentation.Server.Controllers.APIs
                     return BadRequest(errors);
                 }
 
-                var command = new CreateRequestCommand(Request.Firstname, Request.Lastname, Request.DateOfBirth, Request.PhoneNumber, Request.Email, Request.BankAccountNumber);
+                var command = new CreateRequestCommand(request.Title, request.RequestType, request.Fund);
                 var createdRequest = await _mediator.Send(command);
 
-                return CreatedAtAction(nameof(GetRequestById), new { RequestId = createdRequest.Id }, createdRequest);
+                double insurancePremium = createdRequest.GetInsurancePremium(createdRequest.RequestType, createdRequest.Fund);
+
+                // Return the insurance premium as a response
+                return Ok(insurancePremium);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while creating the Request.");
-                return StatusCode(500, "An error occurred while creating the Request.");
+                _logger.LogError(ex, "An error occurred while creating the request.");
+                return StatusCode(500, "An error occurred while creating the request.");
             }
         }
+
         [HttpPut("{RequestId}")]
         [ActionName("UpdateRequest")]
         public async Task<IActionResult> UpdateRequest(int RequestId, [FromBody] RequestWriteDTO Request)
         {
             try
             {
-                var bankAccountNumber = new BankAccountNumber(Request.BankAccountNumber);
 
-                var command = new UpdateRequestCommand(RequestId, Request.Firstname, Request.Lastname, Request.DateOfBirth, Request.PhoneNumber, Request.Email, bankAccountNumber);
+                var command = new UpdateRequestCommand(RequestId, Request.Title, Request.RequestType,  Request.Fund);
                 await _mediator.Send(command);
 
                 return NoContent();

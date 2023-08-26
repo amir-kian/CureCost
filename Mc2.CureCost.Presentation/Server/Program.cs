@@ -35,11 +35,21 @@ namespace Mc2.CureCost.Presentation.Server
             builder.Services.AddScoped<IWriteCustomerRepository, WriteCustomerRepository>();
             builder.Services.AddScoped<IReadCustomerRepository, ReadCustomerRepository>();
             builder.Services.AddScoped<IEventRepository<IDomainEvent>, EventRepository>();
-
             builder.Services.AddScoped<ICustomerEventHandler, CustomerEventHandler>();
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(CreateCustomerCommand))
-                                            .RegisterServicesFromAssemblyContaining(typeof(CreateCustomerCommandHandler)));
+                .RegisterServicesFromAssemblyContaining(typeof(CreateCustomerCommandHandler)));
+
+            builder.Services.AddScoped<IWriteRequestRepository, WriteRequestRepository>();
+            builder.Services.AddScoped<IReadRequestRepository, ReadRequestRepository>();
+            builder.Services.AddScoped<IEventRepository<IDomainEvent>, EventRepository>();
+            builder.Services.AddScoped<IRequestEventHandler, RequestEventHandler>();
+
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(CreateRequestCommand))
+                .RegisterServicesFromAssemblyContaining(typeof(CreateRequestCommandHandler)));
+
+
+
 
 
             var app = builder.Build();

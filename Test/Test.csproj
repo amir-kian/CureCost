@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mc2.CrudTest.Domain\Mc2.CureCost.Domain.csproj" />
     <ProjectReference Include="..\Mc2.CureCost.Domain\Mc2.CureCost.Domain.csproj" />
   </ItemGroup>
 

@@ -5,6 +5,6 @@ namespace Mc2.CureCost.Domain.Queries
 {
     public class GetRequestByIdQuery : IRequest<RequestReadDTO>
     {
-        public int CustomerId { get; set; }
+        public int RequestId { get; set; }
     }
 }

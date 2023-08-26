@@ -5,21 +5,16 @@ namespace Mc2.CureCost.Domain.Commands
 {
     public class CreateRequestCommand : IRequest<Request>
     {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string BankAccountNumber { get; set; }
+        public string Title { get; set; }
+        public int RequestType { get; set; }
+        public int Fund { get; set; }
 
-        public CreateRequestCommand(string firstname, string lastname, DateTime dateOfBirth, string phoneNumber, string email, string bankAccountNumber)
+        public CreateRequestCommand(string title, int requestType, double Fund)
         {
-            Firstname = firstname;
-            Lastname = lastname;
-            DateOfBirth = dateOfBirth;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            BankAccountNumber = bankAccountNumber;
+            Title = title;
+            RequestType = requestType;
+            Fund = Fund;
+
         }
     }
 }

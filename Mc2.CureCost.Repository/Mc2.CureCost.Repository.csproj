@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mc2.CrudTest.Domain\Mc2.CureCost.Domain.csproj" />
-    <ProjectReference Include="..\Mc2.CrudTest.Presentation.Infrastructure\Mc2.CureCost.Presentation.Infrastructure.csproj" />
     <ProjectReference Include="..\Mc2.CureCost.Domain\Mc2.CureCost.Domain.csproj" />
     <ProjectReference Include="..\Mc2.CureCost.Presentation.Infrastructure\Mc2.CureCost.Presentation.Infrastructure.csproj" />
   </ItemGroup>
