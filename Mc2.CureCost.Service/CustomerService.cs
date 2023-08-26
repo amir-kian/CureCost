@@ -2,6 +2,8 @@
 using Mc2.CureCost.Domain.Events;
 using Mc2.CureCost.Domain.Interfaces;
 using Mc2.CureCost.Domain.ValueObjects;
+using PhoneNumbers;
+using PhoneNumber = Mc2.CureCost.Domain.ValueObjects.PhoneNumber;
 
 namespace Mc2.CureCost.Service
 {

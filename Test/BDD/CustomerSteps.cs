@@ -1,7 +1,9 @@
 ﻿using Mc2.CureCost.Domain.Entities;
 using Mc2.CureCost.Domain.ValueObjects;
+using PhoneNumbers;
 using TechTalk.SpecFlow;
 using Xunit;
+using PhoneNumber = Mc2.CureCost.Domain.ValueObjects.PhoneNumber;
 
 namespace Test.BDD
 {

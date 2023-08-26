@@ -78,7 +78,8 @@ namespace Mc2.CureCost.Presentation.Server.Controllers.APIs
                 var command = new CreateCustomerCommand(customer.Firstname, customer.Lastname, customer.DateOfBirth, customer.PhoneNumber, customer.Email, customer.BankAccountNumber);
                 var createdCustomer = await _mediator.Send(command);
 
-                return CreatedAtAction(nameof(GetCustomerById), new { customerId = createdCustomer.Id }, createdCustomer);
+                return CreatedAtAction(nameof(GetCustomerById), new { customerId = createdCustomer.Id },
+                    createdCustomer);
             }
             catch (Exception ex)
             {
